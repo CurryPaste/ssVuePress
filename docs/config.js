@@ -8,7 +8,7 @@ module.exports = {
     theme: '@vuepress/theme-default',
     themeConfig: {
       logo: 'https://vuejs.org/images/logo.png',
-      base: '.',
+      base: '/ssVuePress/',
       sidebar: [
         {
           text: '瞎几把记录',
