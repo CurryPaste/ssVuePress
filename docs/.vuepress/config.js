@@ -1,6 +1,7 @@
 module.exports = {
     // 站点配置
     lang: 'zh-CN',
+    base: "/ssVuePress/",
     title: 'curryPaste`s VuePress ！',
     description: '这是我的第一个 VuePress 站点，先偷懒用js写',
   
@@ -8,7 +9,6 @@ module.exports = {
     theme: '@vuepress/theme-default',
     themeConfig: {
       logo: 'https://vuejs.org/images/logo.png',
-      base: "/ssVuePress/",
       sidebar: [
         {
           text: '瞎几把记录',
