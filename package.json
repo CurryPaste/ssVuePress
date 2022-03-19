@@ -2,7 +2,7 @@
   "name": "lss",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "GiveMeHappy <1138240334@qq.com>",
+  "author": "curryPaste <2771885247@qq.com>",
   "license": "MIT",
   "scripts": {
     "docs:dev": "vuepress dev docs",
