@@ -4,8 +4,8 @@
 ### 前提条件
 - 只要是对象，就会存在 `__proto__`
 - 只要是函数，就会有 `prototype`
-![](./img/proto.png)
-![](./img/prototype.png)
+- ![](./img/proto.png)
+- ![](./img/prototype.png)
 ### 核心示例图
 ![示例](./img/shili.png)
 
