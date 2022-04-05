@@ -1,17 +1,33 @@
 import { defineUserConfig } from 'vuepress';
 import type { DefaultThemeOptions } from 'vuepress';
 
+const htmlCssChildren = [
+  {
+    text: 'css混合模式',
+    link: '/htmlCss/cssMixedMode'
+  }
+];
+
 const jsTsChildren = [
   {
     text: 'js 原型与原型链',
     link: '/jsTs/proto_prototype'
+  },
+  {
+    text: 'JS中 require 和 import 区别',
+    link: '/jsTs/require_import_diff'
+  },
+  {
+    text: 'js中的call、apply、bind',
+    link: '/jsTs/call_apply_bind'
   }
 ]
 
 const sidebar = [
   {
     text: 'HTML 与 CSS',
-    link: '/htmlCss'
+    link: '/htmlCss',
+    children: htmlCssChildren
   }, {
     text: 'JS 与 TS',
     link: '/jsTs',

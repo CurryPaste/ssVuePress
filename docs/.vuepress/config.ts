@@ -16,6 +16,10 @@ const jsTsChildren = [
   {
     text: 'JS中 require 和 import 区别',
     link: '/jsTs/require_import_diff'
+  },
+  {
+    text: 'js中的call、apply、bind',
+    link: '/jsTs/call_apply_bind'
   }
 ]
 
