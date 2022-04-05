@@ -32,3 +32,5 @@
 - 至此 `Function` 和 `Object` 的关系闭环
 - ![](./img/Function_prototype_proto_Object_prototype.png)
 - Over~
+
+<Giscus />

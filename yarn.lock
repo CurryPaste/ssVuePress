@@ -650,6 +650,16 @@
   "resolved" "https://registry.npmjs.org/envinfo/-/envinfo-7.8.1.tgz"
   "version" "7.8.1"
 
+"esbuild-windows-64@0.13.15":
+  "integrity" "sha512-9aMsPRGDWCd3bGjUIKG/ZOJPKsiztlxl/Q3C1XDswO6eNX/Jtwu4M+jb6YDH9hRSUflQWX0XKAfWzgy5Wk54JQ=="
+  "resolved" "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.13.15.tgz"
+  "version" "0.13.15"
+
+"esbuild-windows-64@0.14.27":
+  "integrity" "sha512-b3y3vTSl5aEhWHK66ngtiS/c6byLf6y/ZBvODH1YkBM+MGtVL6jN38FdHUsZasCz9gFwYs/lJMVY9u7GL6wfYg=="
+  "resolved" "https://registry.npmjs.org/esbuild-windows-64/-/esbuild-windows-64-0.14.27.tgz"
+  "version" "0.14.27"
+
 "esbuild@^0.13.12":
   "integrity" "sha512-raCxt02HBKv8RJxE8vkTSCXGIyKHdEdGfUmiYb8wnabnaEmHzyW7DCHb5tEN0xU8ryqg5xw54mcwnYkC4x3AIw=="
   "resolved" "https://registry.npmjs.org/esbuild/-/esbuild-0.13.15.tgz"
@@ -1381,6 +1391,13 @@
     "@vue/runtime-dom" "3.2.31"
     "@vue/server-renderer" "3.2.31"
     "@vue/shared" "3.2.31"
+
+"vuepress-plugin-giscus@^2.0.0-alpha.19":
+  "integrity" "sha512-GMvGXkLVTFdyph+bpAiYkfDmHKXavqLWxh1rHE682bwiXRO25h1Alvy58vb8v8JylQqSVsZiqSh+jSQRUEF4eQ=="
+  "resolved" "https://registry.npmjs.org/vuepress-plugin-giscus/-/vuepress-plugin-giscus-2.0.0-alpha.19.tgz"
+  "version" "2.0.0-alpha.19"
+  dependencies:
+    "@vuepress/client" "2.0.0-beta.35"
 
 "vuepress-vite@2.0.0-beta.36":
   "integrity" "sha512-KbN7HDhaCLVB7/YmJDydQClUjMBybLtBpB376mi5fD16RFBzHwMGI7zopb4lu7Nmj2BnvLI9kpottv9zuOJYLQ=="
