@@ -33,4 +33,4 @@
 - ![](./img/Function_prototype_proto_Object_prototype.png)
 - Over~
 
-<Giscus />
+<!-- <Giscus /> -->
