@@ -223,4 +223,3 @@ console.log(foo.getX.apply(obj));   //81
 因为call、apply、bind，是es6前的一些操作方式，所以例子就没有用es6+的语法糖，如 `...展开运算符` `箭头函数 () => {}`
 :::
 
-<!-- <Giscus /> -->
