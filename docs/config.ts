@@ -20,6 +20,10 @@ const jsTsChildren = [
   {
     text: 'js中的call、apply、bind',
     link: '/jsTs/call_apply_bind'
+  },
+  {
+    text: '作用域与上下文',
+    link: '/jsTs/scope_context'
   }
 ]
 
