@@ -15,8 +15,5 @@
   "dependencies": {
     "vite": "2.8.x",
     "vuepress-plugin-giscus": "^2.0.0-alpha.19"
-  },
-  "resolutions": {
-    "vite": "2.8.6"
   }
 }
