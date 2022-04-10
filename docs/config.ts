@@ -24,6 +24,10 @@ const jsTsChildren = [
   {
     text: '作用域与上下文',
     link: '/jsTs/scope_context'
+  },
+  {
+    text: '深拷贝和浅拷贝',
+    link: '/jsTs/deepCopy_shallowCopy'
   }
 ]
 
