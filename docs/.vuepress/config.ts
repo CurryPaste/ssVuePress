@@ -29,7 +29,14 @@ const jsTsChildren = [
     text: '深拷贝和浅拷贝',
     link: '/jsTs/deepCopy_shallowCopy'
   }
-]
+];
+
+const httpChildren = [
+  {
+    text: 'http缓存',
+    link: '/http/http_cache'
+  }
+];
 
 const sidebar = [
   {
@@ -42,7 +49,8 @@ const sidebar = [
     children: jsTsChildren
   }, {
     text: 'Http 与 网络协议',
-    link: '/http'
+    link: '/http',
+    children: httpChildren,
   }, {
     text: '小程序 - 跨平台',
     link: '/applet'
