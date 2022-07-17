@@ -5,7 +5,11 @@ const htmlCssChildren = [
   {
     text: 'css混合模式',
     link: '/htmlCss/cssMixedMode'
-  }
+  },
+  {
+    text: 'css和js的动画比较',
+    link: '/htmlCss/cssAndJsAnimation'
+  },
 ];
 
 const jsTsChildren = [
