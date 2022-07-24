@@ -10,6 +10,10 @@ const htmlCssChildren = [
     text: 'css和js的动画比较',
     link: '/htmlCss/cssAndJsAnimation'
   },
+  {
+    text: '什么是BFC',
+    link: '/htmlCss/bfc'
+  }
 ];
 
 const jsTsChildren = [
