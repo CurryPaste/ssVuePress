@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as r,F as n,a as e,b as c}from"./app.58245ce7.js";const s={},o=e("h1",{id:"app",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#app","aria-hidden":"true"},"#"),c(" APP")],-1),_=e("p",null,"flutter\u3001react-native",-1);function d(i,l){return t(),r(n,null,[o,_],64)}var f=a(s,[["render",d],["__file","index.html.vue"]]);export{f as default};
