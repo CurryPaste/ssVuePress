@@ -36,6 +36,10 @@ const jsTsChildren = [
   {
     text: '深拷贝和浅拷贝',
     link: '/jsTs/deepCopy_shallowCopy'
+  },
+  {
+    text: 'TS类型推断',
+    link: '/jsTs/ts_typeInference'
   }
 ];
 
