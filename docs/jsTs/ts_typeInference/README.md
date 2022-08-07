@@ -107,5 +107,122 @@ type GetFirstArgument<T> = T extends (first: infer FirstArgument, ... // 没有�
 而这个 TS 的函数则是在：`const a: GetFirstArgument<(a: number) => void>`时调用（不是真的如 JS 函数一样调用，只是进行类比）。
 
 
-<!-- ### 参数类型推断（type argument inference）（） -->
+## update-2
+### 参数类型推断
+在开始讲参数推断之前，我们需要至少对 TS 的泛型（generics）有基本的理解，推荐大家至少去官网看一下文档
+：[文档地址](https://link.juejin.cn/?target=https%3A%2F%2Fwww.typescriptlang.org%2Fdocs%2Fhandbook%2F2%2Fgenerics.html)。
+
+我这里做一个最简单直观的介绍，我们直接用官方文档的例子：
+
+```ts
+function wrapper(arg: number): {inner: number} {
+  return {
+    inner: arg,
+  };
+}
+```
+比如这个函数，他帮助我们把传入的参数外包了一层，使之变成了一个对象。在这个定义里面，我们的入参只能是 number 类型的，但是从函数实现上来说，我们其实并没必要把这个类型限制这么死，我门希望这个函数可以支持更多的类型。这里有很多解决方案，比如我们可以把我们能想象到的类型写到定义上：
+
+```ts
+function wrapper(arg: number ｜ string | Date): { inner: number | string | Date } {
+```
+
+但是这并不是很好，因为每次我们希望增加一种类型的支持，都需要重新修改函数的定义，并且我们得到的返回值的`inner`类型是不确定的，不论我们最终传入的是`number`还是`string`，你得到的返回值的inner都是定义中的所有可能性。
+
+而泛型则就是用来简单地解决这个问题的，我们来看看泛型的用法：
+
+```ts
+function wrapper<T>(arg: T): {inner: T} {
+  return {
+    inner: arg,
+  };
+}
+```
+
+在这里我们对于函数的定义上增加了`<T>`，而他就是泛型的关键。当我们使用这个函数的时候就会变成这样：
+
+```ts
+wrapper<number>(1);
+```
+
+这时候 TS 的编译器就会知道，你这次调用`wrapper`函数传入的是`number`类型，所以这次函数调用的返回值也是`{inner: number}`。
+
+泛型就类似于针对 TS 定义的参数，通过在调用时指定类型，来动态地应用类型于函数定义。就像我们在 JS 中，函数的参数可以控制函数的运行结果一样，所以让我用一句话来定义就是：针对 TS 定义的参数。
+
+OK，泛型的基础用法和理解就讲到这里，更多的用法还是去看官方文档吧。
+
+### 参数类型推断（type argument inference）
+那么接下去我们就来聊聊本文的另一个重点：参数类型推断。在 TS 中，类型推断时非常常见的，比如：
+
+类型推断同样可是使用在函数的泛型定义中，比如上面的例子：
+
+```ts
+function wrapper<T>(arg: T): {inner: T} {
+  return {
+    inner: arg,
+  };
+}
+```
+
+如若我们在使用时直接`wrapper(1)`，这个函数也能正常使用，并且 TS 也能识别出返回的类型是`{inner: number}`。在这个过程中，TS 首先发现我们传递给`wrapper`函数的参数是`1`，是个 number 类型。继而发现`wrapper`函数接受泛型，因为整个函数只有一个泛型而且和入参的类型时一致的，所以 TS 可以反推出`<T>`就是`number`类型。而这个过程是在`wrapper(1)`调用的时候确定的，所以就很类似 JS 的函数。
+
+参数类型推断非常有用，尤其是当入参的类型非常复杂的时候。典型的例子是 vue3 的`defineComponent`函数。
+
+`defineComponent`用于定义一个组件，而组件定义的配置内容的类型时非常复杂的：
+
+```ts
+defineComponent({
+    props: {},
+    data() {},
+    setup() {},
+    mounted() {},
+    ...
+})
+```
+
+如果我们需要在使用该函数的时候把整个配置的内容都定义出来，那么我们的代码量可能需要增加一倍，并且整个学习难度也自然会上升一些，毕竟你需要记住这些参数的类型。
+
+我们可以看一下`defineComponeng 的定义：
+
+```ts
+export function defineComponent<
+  PropsOptions extends Readonly<ComponentPropsOptions>,
+  RawBindings,
+  D,
+  C extends ComputedOptions = {},
+  M extends MethodOptions = {},
+  Mixin extends ComponentOptionsMixin = ComponentOptionsMixin,
+  Extends extends ComponentOptionsMixin = ComponentOptionsMixin,
+  E extends EmitsOptions = Record<string, any>,
+  EE extends string = string
+>(
+  options: ComponentOptionsWithObjectProps<
+    PropsOptions,
+    RawBindings,
+    D,
+    C,
+    M,
+    Mixin,
+    Extends,
+    E,
+    EE
+  >
+): DefineComponent<PropsOptions, RawBindings, D, C, M, Mixin, Extends, E, EE>;
+```
+
+这还仅仅是一种函数签名，vue3 的`defineComponent`函数签名有 4 种 overrides，其复杂程度可想而知。索性有参数类型推断，让我们避免了每次使用都要写一堆复杂定义的烦恼。
+
+我们只需要：
+```ts
+const Comp = defineComponent({
+  props: {
+    name: String,
+  },
+});
+```
+
+我们就知道`Comp`的 `props` 中有一个名为 `name` 的属性类型为 `String` 。
+
+
+
 <!-- https://juejin.cn/post/7056750775749312548 -->
