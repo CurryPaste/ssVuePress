@@ -224,5 +224,139 @@ const Comp = defineComponent({
 我们就知道`Comp`的 `props` 中有一个名为 `name` 的属性类型为 `String` 。
 
 
+### extends
+
+我相信你已经注意到了在上面的 `defineComponents` 存在着非常多的 `extends` 。这又是 TS 中对于类型推断非常重要的一个字段。他的重要性体现在对鱼类型约束上。当你写 `function A<T>(opt: T): T` 的时候，这里的 `T` 可以是任意类型，所以你调用函数 `A(1)` 的时候， `T` 的类型又完全交还给 TS 来判断，比如之前的数组例子：
+
+```ts
+function A<T>(opt: T): T {
+  return opt;
+}
+
+const tuple = A(['a', 'b']);
+```
+
+这时候 `tuple` 会是 `string[]` 类型，而不是我们期望的 `[string, string]` 类型。这时候我们就可以给 `T` 一个约束：
+
+```ts
+function A<T extends [string, ...string[]]>(opt: T): T {
+  return opt;
+}
+
+const tuple = A(['a', 'b']);
+```
+
+此时我们的 `tuple` 就会是 `[string, string]` ，我们给 `T` 约束为 `string` 类型的 tuple，TS 就会在类型推断的时候有限匹配约束的类型，如果类型无法匹配则会报错。
+
+类型约束在类型推断中是非常有用的，事实上你应该尽量在使用泛型时赋予一个约束，这能够帮助我们更精确的得到自己想要的类型，你可以回过头去看 vue3 的 `difineComponent` ，几乎所有的泛型都是用 `extends` 来进行类型约束。
+
+### 实例讲解
+
+最后我们通过一个例子再来展示一下参数类型推断的作用，假如有如下的场景：
+```ts
+function defineStore(options) {
+  return options; // 你创建的store
+}
+
+defineStore({
+  actions: {
+    a: (commits) => commits.a,
+  },
+  commits: {
+    a: (state, newName) => 'a',
+  },
+  state: {
+    name: 'jokcy',
+  },
+});
+```
+
+我们想要创建一个定义 `store` 的函数，这个定义比较类似 vuex，我们分成 `state/actions/commits` 三部分，在每个 `commit` 函数中我们会接收 `state` 作为第一个参数，便于我们更新数据；在每个 `action` 中我们接受所有 `commits` 作为参数，这样我们在 `action` 中可以进行数据更新。
+
+那么为了更好的体验，我们自然希望每个 `commit` 中拿到的 `state` 可以知道其类型，同样在每个 `action` 中也知道所有 `commit` 的函数签名，这样我们调用 `commit` 的时候就知道要传哪些参数，TS 也可以帮我们在代码检测帮我们定为错误。我们可以这么做：
+
+```ts
+type MyCommits = {...}
+type MyState = {...}
+
+a: (commits: MyCommits)
+a: (state: MyState)
+```
+
+但这就要求我们对整个定义的类型做出声明，工作量非常大，而且未来你改一个函数，你还得改一遍类型，所有工作都 double 了，你愿意么？我肯定不愿意，那么怎么办呢？我希望 `defineStore` 来帮我完成这件事情，我希望我在调用他的时候自动帮我检测这些关键类型，在这里也就是 `state` 和 `commits` ，我们先来看 `state`：
+
+```ts
+type Options<State> = {
+  actions: Record<
+    string,
+    (commits: Record<string, (...args: any) => void>) => void
+  >;
+  commits: Record<string, (state: State, ...args: any) => void>;
+  state: State;
+};
+
+function defineStore<State>(options: Options<State>) {
+  return options; // 你创建的store
+}
+```
+
+我们为 `defineStore` 定义来一个 `State` 泛型，这样之后，你在定义 `commit` 的时候，你拿到的第一个参数 `state` 自动会推断出其类型，而这个类型的依据就是你传入的 `state` 的值。
+
+注意: 你可以打开[TS Playground](https://link.juejin.cn/?target=https%3A%2F%2Fwww.typescriptlang.org%2F)把上面的代码复制进去看一下运行结果。
+
+既然 `state` 可以这样，那么自然 `commits` 也可以，所以我们会得到以下的结果：
+
+```ts
+type Options<
+  State,
+  Commits extends Record<string, (state: State, ...args: any) => void>
+> = {
+  actions: Record<string, (commits: Commits) => void>;
+  commits: Commits;
+  state: State;
+};
+
+function defineStore<
+  State,
+  Commits extends Record<string, (state: State, ...args: any) => void>
+>(options: Options<State, Commits>) {
+  return options;
+}
+
+defineStore({
+  actions: {
+    a: (commits) => commits.a,
+  },
+  commits: {
+    a: (state, newName: string) => 'a',
+  },
+  state: {
+    name: 'jokcy',
+  },
+});
+```
+
+但是你实际运行这段代码时却会发现在 `actions` 里面并拿不到真正的 `commits` 而是 `Record<string, ...>` ，这里有一个很奇怪的问题，在得到答案之后会再继续更新。这个问题时可以解决的，怎么解决呢？只需要手动声明每个 `commit` 中的 `state` 的类型就可以了：
+
+```ts
+type State = {
+  name: string;
+};
+
+commits: {
+  a: (state: State, newName: stirng) => 'a';
+}
+```
+
+你可以在 playground 尝试一下。这是目前一个可以接受的方案，因为我也会推荐你声明一下你的 `state` 类型，因为自动推断数据的类型经常不准，比如你直接写:  `state: {arr: []}` ，你会得到 `never[]` 导致你无法修改 `arr` ，所以你肯定是要声明具体每个数组项的类型的。不论如何，定义的大头， `commits` 他肯定是帮我们省去了。
+
+
+### 小结
+本文中我尽力为大家解释清楚 TS 中的类型推断（type infer）是怎么回事，我相信你自己尝试去理解一下把 TS 泛型类比函数的方式，一定会帮助你更好地理解。类型推断是非常重要的，如果你对于这一块不够理解，阅读 TS 代码就会比较困难，尤其是一些开源项目的定义，那是极其复杂的，各种泛型套泛型，所以即便你可能自己不会去写这么复杂的定义，推荐你至少对类型推断有一个总体的认知，防止在遇到类型问题时一脸懵逼。
+
+另外推荐大家可以用一下 Discord，TS 官方有一个讨论组在上面，并且有专门的 help channel，你可以去提问，会有专门的人来回复你（当然你的英语也得过关，以及你一定要学会好的提问方式）。[频道链接](https://link.juejin.cn/?target=https%3A%2F%2Fdiscord.gg%2Ftypescript)。
+
+[查看原文 - Typescript重点之：理解类型推断](https://juejin.cn/post/7056750775749312548)
+
 
 <!-- https://juejin.cn/post/7056750775749312548 -->
