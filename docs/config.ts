@@ -40,6 +40,10 @@ const jsTsChildren = [
   {
     text: 'TS类型推断',
     link: '/jsTs/ts_typeInference'
+  },
+  {
+    text: 'nodeJsV12',
+    link: '/jsTs/nodeJsV12'
   }
 ];
 
