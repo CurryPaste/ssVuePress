@@ -13,6 +13,10 @@ const htmlCssChildren = [
   {
     text: '什么是BFC',
     link: '/htmlCss/bfc'
+  },
+  {
+    text: 'Echarts',
+    link: '/htmlCss/echarts'
   }
 ];
 
