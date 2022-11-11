@@ -48,7 +48,11 @@ const jsTsChildren = [
   {
     text: 'nodeJsV12',
     link: '/jsTs/nodeJsV12'
-  }
+  },
+  {
+    text: 'TS: type 和 interface 的区别',
+    link: '/jsTs/ts_type_interface_diff'
+  },
 ];
 
 const httpChildren = [
