@@ -11,7 +11,7 @@
 
 ### 时间进程图
 
-[](./img/timeLine.jpg)
+![](./img/timeLine.jpg)
 图中可以清晰的看到：
 
 - 2010 年 `npm` 诞生第一版
