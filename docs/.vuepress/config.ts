@@ -1,5 +1,7 @@
 import { defineUserConfig } from 'vuepress';
-import type { DefaultThemeOptions } from 'vuepress';
+import { commentPlugin } from 'vuepress-plugin-comment2';
+import { defaultTheme } from '@vuepress/theme-default'
+
 
 const htmlCssChildren = [
   {
@@ -88,7 +90,7 @@ const sidebar = [
   }
 ]
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig({
   // 站点配置
   lang: 'zh-CN',
   base: "/ssVuePress/",
@@ -96,8 +98,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '用VuePress偷懒整的一个站点',
 
   // 主题和它的配置
-  theme: '@vuepress/theme-default',
-  themeConfig: {
+  theme: defaultTheme({
     logo: 'https://avatars.githubusercontent.com/u/51729441?s=96&v=4',
     sidebar: [
       {
@@ -106,5 +107,32 @@ export default defineUserConfig<DefaultThemeOptions>({
       },
       ...sidebar
     ]
-  },
+  }),
+  plugins: [
+    commentPlugin({
+      // 插件选项
+      provider: "Giscus", //评论服务提供者。
+      comment: true, //启用评论功能
+      repo: "CurryPaste/ssVuePress", //远程仓库
+      repoId: "R_kgDOHB3Haw", //对应自己的仓库Id
+      category: "Announcements",
+      categoryId: "xxDIC_kwDOHB3Ha84CObYUx" //对应自己的分类Id
+    }),
+  ]
 })
+
+
+// git评论相关配置
+// [
+//   "vuepress-plugin-giscus", {
+//     repo: "CurryPaste/ssVuePress",  // required, string, format: user_name/repo_name
+//     repoId: "R_kgDOHB3Haw",  // required, string, generate it on Giscus's website
+//     category: "Announcements",  // required, string
+//     categoryId: "DIC_kwDOHB3Ha84CObYU",  // required, string, generate it on Giscus's website
+//     mapping: "pathname",  // optional, string, default="title"
+//     reactionsEnabled: "1",  // optional, boolean, default=true
+//     // theme: "light", // optional, string, default="light"
+//     lang: "zh-CN",  // optional, string, default="auto" (follow the site's language, fell to "en" if your site's language is not supported by Giscus)
+//     crossorigin: "anonymous"  // optional, string, default="anonymous"
+//   }
+// ]
