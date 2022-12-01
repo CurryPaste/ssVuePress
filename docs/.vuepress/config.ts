@@ -113,10 +113,13 @@ export default defineUserConfig({
       // 插件选项
       provider: "Giscus", //评论服务提供者。
       comment: true, //启用评论功能
+      // giscus选项
       repo: "CurryPaste/ssVuePress", //远程仓库
       repoId: "R_kgDOHB3Haw", //对应自己的仓库Id
       category: "Announcements",
-      categoryId: "xxDIC_kwDOHB3Ha84CObYUx" //对应自己的分类Id
+      categoryId: "xxDIC_kwDOHB3Ha84CObYUx", //对应自己的分类Id
+      mapping: "pathname", // 页面 ↔️ discussion 映射关系
+      inputPosition: "bottom", // 输入框的位置
     }),
   ]
 })
