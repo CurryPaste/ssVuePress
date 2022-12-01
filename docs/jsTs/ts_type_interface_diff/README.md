@@ -100,3 +100,5 @@ type FType = boolean | string | number;
 所以在对于对象结构的类型定义上，建议尽可能的使用 `interface` ，而在合适的场景使用 `type` 。
 
 [原文链接](https://blog.csdn.net/qq_42345237/article/details/124895617)
+
+<CommentService />
