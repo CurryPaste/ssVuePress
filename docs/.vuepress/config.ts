@@ -59,6 +59,10 @@ const jsTsChildren = [
     text: 'npx、npm、cnpm、pnpm的区别',
     link: '/jsTs/npx_npm_cnpm_pnpm_diff'
   },
+  {
+    text: 'js数组方法reduce经典用法代码分享',
+    link: '/jsTs/js_array_reduce_examples'
+  },
 ];
 
 const httpChildren = [
