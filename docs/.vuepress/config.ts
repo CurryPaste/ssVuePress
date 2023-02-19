@@ -63,6 +63,10 @@ const jsTsChildren = [
     text: 'js数组方法reduce经典用法代码分享',
     link: '/jsTs/js_array_reduce_examples'
   },
+  {
+    text: 'vue中动态引入图片为什么要是require',
+    link: '/jsTs/vue_import_img_require'
+  },
 ];
 
 const httpChildren = [

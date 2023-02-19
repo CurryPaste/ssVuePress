@@ -1,5 +1,7 @@
 # TS type 和 interface 的区别
 
+[原文链接](https://blog.csdn.net/qq_42345237/article/details/124895617)
+
 在 TS 中，`type` 和 `interface` 相似，都可以给类型命名并通过该名字来引用表示的类型。不过它们之间是存在一些差别的，我们在使用时也需要注意一些特殊场景。
 
 ### 概念
@@ -98,7 +100,5 @@ type FType = boolean | string | number;
 而对于 `interface` 来说，它是正儿八经的用来定义接口类型（约束数类型和属性）的，且接口类型是支持继承和声明合并的。
 
 所以在对于对象结构的类型定义上，建议尽可能的使用 `interface` ，而在合适的场景使用 `type` 。
-
-[原文链接](https://blog.csdn.net/qq_42345237/article/details/124895617)
 
 <CommentService />

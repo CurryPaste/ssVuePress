@@ -1,5 +1,7 @@
 # npx、npm、cnpm、pnpm 的区别
 
+[原文链接](https://zhuanlan.zhihu.com/p/494076214)
+
 - 一张图了解`包管理器`的发展史。
 - `npm` 是什么，如何从众人诟病到翻身做主人？
 - `npx` 是什么，它解决了什么问题
@@ -148,5 +150,3 @@ yarn remove [package]
 - `pnpm` 通过连接的方式，让多个项目的依赖公用同一个包，大大节省了磁盘空间，比 `yarn` 和 npm 下载速度快得多，但是也有连接带来的各种兼容问题。
 
 > 使用 npm、yarn、pnpm 都是可以的，但是最好是团队都使用同一个管理器。
-
-[原文链接](https://zhuanlan.zhihu.com/p/494076214)
