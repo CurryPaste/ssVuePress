@@ -75,6 +75,12 @@ const httpChildren = [
     link: '/http/http_cache'
   }
 ];
+const algorithmChildren = [
+  {
+    text: '递归_汉诺塔',
+    link: '/algorithm/recurrence_Hanoi'
+  }
+]
 
 const sidebar = [
   {
@@ -95,6 +101,10 @@ const sidebar = [
   }, {
     text: 'App - 跨平台',
     link: '/app'
+  }, {
+    text: '算法相关',
+    link: '/algorithm',
+    children: algorithmChildren
   }
 ]
 
