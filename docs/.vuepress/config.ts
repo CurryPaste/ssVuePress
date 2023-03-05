@@ -79,7 +79,11 @@ const algorithmChildren = [
   {
     text: '递归_汉诺塔',
     link: '/algorithm/recurrence_Hanoi'
-  }
+  },
+  {
+    text: '排序_快速排序法',
+    link: '/algorithm/sort_quickSort'
+  },
 ]
 
 const sidebar = [
