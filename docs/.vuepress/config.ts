@@ -67,7 +67,13 @@ const jsTsChildren = [
     text: 'vue中动态引入图片为什么要是require',
     link: '/jsTs/vue_import_img_require'
   },
+  {
+    text: 'React hooks 的基础概念：hooks链表',
+    link: '/jsTs/react_hooks_linkedList'
+  },
 ];
+
+// TODO: 0310的时候，重写xmlHttpRequest被反馈网络有问题，需要查一下这是怎么实现的
 
 const httpChildren = [
   {
