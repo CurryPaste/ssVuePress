@@ -71,6 +71,10 @@ const jsTsChildren = [
     text: 'React hooks 的基础概念：hooks链表',
     link: '/jsTs/react_hooks_linkedList'
   },
+  {
+    text: 'JavaScript中的严格模式',
+    link: '/jsTs/js_use_strict'
+  },
 ];
 
 // TODO: 0310的时候，重写xmlHttpRequest被反馈网络有问题，需要查一下这是怎么实现的
