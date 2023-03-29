@@ -1,0 +1,1 @@
+import{_ as t,o as s,c,b as e,d as a}from"./app.4f2cb50a.js";const n={},o=e("h1",{id:"html-和-css",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#html-和-css","aria-hidden":"true"},"#"),a(" html 和 css")],-1),r=[o];function d(_,h){return s(),c("div",null,r)}const l=t(n,[["render",d],["__file","index.html.vue"]]);export{l as default};

@@ -1,0 +1,1 @@
+import{_ as s,o as c,c as t,b as e,d as a}from"./app.4f2cb50a.js";const n={},o=e("h1",{id:"css混合模式",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#css混合模式","aria-hidden":"true"},"#"),a(" css混合模式")],-1),r=[o];function d(_,i){return c(),t("div",null,r)}const l=s(n,[["render",d],["__file","index.html.vue"]]);export{l as default};

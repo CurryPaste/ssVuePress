@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-14ce4c2e","path":"/jsTs/","title":"js和ts相关","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1680090772000,"contributors":[{"name":"susheng","email":"lisusheng@dycjr.com","commits":1}]},"filePathRelative":"jsTs/README.md"}');export{e as data};

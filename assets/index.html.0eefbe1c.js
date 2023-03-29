@@ -1,0 +1,1 @@
+import{_ as t,o as s,c as a,b as e,d as c}from"./app.4f2cb50a.js";const n={},o=e("h1",{id:"js和ts相关",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#js和ts相关","aria-hidden":"true"},"#"),c(" js和ts相关")],-1),r=[o];function d(_,i){return s(),a("div",null,r)}const l=t(n,[["render",d],["__file","index.html.vue"]]);export{l as default};

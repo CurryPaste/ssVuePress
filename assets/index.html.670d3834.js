@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-e84c255a","path":"/jsTs/array_reduce_usage/","title":"js 数组方法 reduce 经典用法","lang":"zh-CN","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1680090772000,"contributors":[{"name":"susheng","email":"lisusheng@dycjr.com","commits":1}]},"filePathRelative":"jsTs/array_reduce_usage/README.md"}');export{e as data};
