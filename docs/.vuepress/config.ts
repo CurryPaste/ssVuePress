@@ -75,6 +75,10 @@ const jsTsChildren = [
     text: 'JavaScript中的严格模式',
     link: '/jsTs/js_use_strict'
   },
+  {
+    text: '为什么 […‘👩‍❤️‍💋‍👨’] 在 JavaScript 中返回 [‘👩’, ‘‍’, ‘❤’, ‘️’, ‘‍’, ‘💋’, ‘‍’, ‘👨’]？',
+    link: '/jsTs/emoji_form_programming_perspective'
+  },
 ];
 
 const httpChildren = [
@@ -124,6 +128,10 @@ const sidebar = [
     text: '算法相关',
     link: '/algorithm',
     children: algorithmChildren
+  }, {
+    text: '生活杂项',
+    link: '/lifeGossip',
+    children: lifeGossip
   }
 ]
 
