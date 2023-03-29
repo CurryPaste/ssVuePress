@@ -77,8 +77,6 @@ const jsTsChildren = [
   },
 ];
 
-// TODO: 0310的时候，重写xmlHttpRequest被反馈网络有问题，需要查一下这是怎么实现的
-
 const httpChildren = [
   {
     text: 'http缓存',
@@ -93,6 +91,13 @@ const algorithmChildren = [
   {
     text: '排序_快速排序法',
     link: '/algorithm/sort_quickSort'
+  },
+]
+
+const lifeGossip = [
+  {
+    text: '为什么游戏的充值金额都是648',
+    link: '/lifeGossip/why_game_recharge_amount_648'
   },
 ]
 
